@@ -1,4 +1,3 @@
-// Hacer una suma
 // Agragar operacion resta
 // Hacer una resta
 // Agragar operacion multiplicacion
@@ -15,12 +14,25 @@ void test_crear_calculadora(void) {
 }
 
 // Agragar operacion suma
-void test_agragar_suma(void) {
+void test_agregar_suma(void) {
     calculadora_t calculadora = CrearCalculadora();
 
     int Suma(int a, int b) {
-        return a + b;
+        return (a + b);
     }
 
     TEST_ASSERT_TRUE(AgregarOperacion(calculadora, '+', Suma));
 }
+
+// // Hacer suma
+// void test_hacer_suma(void) {
+//     calculadora_t calculadora = CrearCalculadora();
+
+//     int Suma(int a, int b) {
+//         return a + b;
+//     }
+
+//     TEST_ASSERT_TRUE(AgregarOperacion(calculadora, '+', Suma));
+//     TEST_ASSERT_EQUAL(6, Calcular(calculadora, "2+4"));
+//     TEST_ASSERT_EQUAL(7, Calcular(calculadora, "2+5"));
+// }
