@@ -26,8 +26,11 @@ SPDX-License-Identifier: MIT
 /* === Headers files inclusions =============================================================== */
 
 #include "calculadora.h"
+#include <stdlib.h>
 
 /* === Macros definitions ====================================================================== */
+
+struct calculadora_s {};
 
 /* === Private data type declarations ========================================================== */
 
@@ -35,11 +38,18 @@ SPDX-License-Identifier: MIT
 
 /* === Private function declarations =========================================================== */
 
+calculadora_t CrearCalculadora(void);
+
 /* === Public variable definitions ============================================================= */
 
 /* === Private variable definitions ============================================================ */
 
 /* === Private function implementation ========================================================= */
+
+calculadora_t CrearCalculadora(void) {
+    calculadora_t calculadora = malloc(sizeof(struct calculadora_s));
+    return calculadora;
+}
 
 /* === Public function implementation ========================================================== */
 

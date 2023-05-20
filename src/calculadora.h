@@ -38,6 +38,8 @@ extern "C" {
 
 /* === Public data type declarations =========================================================== */
 
+typedef struct calculadora_s * calculadora_t;
+
 /* === Public variable declarations ============================================================ */
 
 /* === Public function declarations ============================================================ */
