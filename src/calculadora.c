@@ -27,6 +27,7 @@ SPDX-License-Identifier: MIT
 
 #include "calculadora.h"
 #include <stdlib.h>
+#include <stdbool.h>
 
 /* === Macros definitions ====================================================================== */
 
@@ -34,11 +35,17 @@ struct calculadora_s {};
 
 /* === Private data type declarations ========================================================== */
 
+typedef struct operacion_s * operacion_t;
+
+struct operacion_s {};
+
 /* === Private variable declarations =========================================================== */
 
 /* === Private function declarations =========================================================== */
 
 calculadora_t CrearCalculadora(void);
+
+bool AgregarOperacion(calculadora_t calculadora, operacion_t operacion, char operador);
 
 /* === Public variable definitions ============================================================= */
 
@@ -49,6 +56,10 @@ calculadora_t CrearCalculadora(void);
 calculadora_t CrearCalculadora(void) {
     calculadora_t calculadora = malloc(sizeof(struct calculadora_s));
     return calculadora;
+}
+
+bool AgregarOperacion(calculadora_t calculadora, operacion_t operacion, char operador) {
+    return true;
 }
 
 /* === Public function implementation ========================================================== */
