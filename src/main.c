@@ -25,6 +25,7 @@ SPDX-License-Identifier: MIT
 
 /* === Headers files inclusions =============================================================== */
 
+#include <stdio.h>
 #include "calculadora.h"
 
 /* === Macros definitions ====================================================================== */
@@ -35,13 +36,59 @@ SPDX-License-Identifier: MIT
 
 /* === Private function declarations =========================================================== */
 
+int Suma(int a, int b);
+
+int Resta(int a, int b);
+
+int Producto(int a, int b);
+
+int Cociente(int a, int b);
+
 /* === Public variable definitions ============================================================= */
 
 /* === Private variable definitions ============================================================ */
 
 /* === Private function implementation ========================================================= */
 
+int Suma(int a, int b) {
+    return (a + b);
+}
+
+int Resta(int a, int b) {
+    return (a - b);
+}
+
+int Producto(int a, int b) {
+    return (a * b);
+}
+
+int Cociente(int a, int b) {
+    return (a / b);
+}
+
 /* === Public function implementation ========================================================== */
+int main(void) {
+    int ans = 0;
+    calculadora_t mi_calculadora = CrearCalculadora();
+
+    AgregarOperacion(mi_calculadora, '+', Suma);
+    AgregarOperacion(mi_calculadora, '-', Resta);
+    AgregarOperacion(mi_calculadora, '*', Producto);
+    AgregarOperacion(mi_calculadora, '/', Cociente);
+
+    ans = Calcular(mi_calculadora, "7+3");
+    printf("7 + 3 = %i\n", ans);
+
+    ans = Calcular(mi_calculadora, "7-3");
+    printf("7 - 3 = %i\n", ans);
+
+    ans = Calcular(mi_calculadora, "7*3");
+    printf("7 * 3 = %i\n", ans);
+
+    ans = Calcular(mi_calculadora, "7/3");
+    printf("7 / 3 = %i\n", ans);
+    return 0;
+}
 
 /* === End of documentation ==================================================================== */
 
