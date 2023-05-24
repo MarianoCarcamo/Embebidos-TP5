@@ -25,6 +25,10 @@ int Producto(int a, int b) {
     return (a * b);
 }
 
+int Cociente(int a, int b) {
+    return (a / b);
+}
+
 // Agragar operacion
 void test_agregar_operacion(void) {
     calculadora_t calculadora = CrearCalculadora();
@@ -59,4 +63,13 @@ void test_hacer_producto(void) {
     AgregarOperacion(calculadora, '*', Producto);
     TEST_ASSERT_EQUAL(8, Calcular(calculadora, "4*2"));
     TEST_ASSERT_EQUAL(12, Calcular(calculadora, "3*4"));
+}
+
+// Hacer cociente
+void test_hacer_cociente(void) {
+    calculadora_t calculadora = CrearCalculadora();
+
+    AgregarOperacion(calculadora, '/', Cociente);
+    TEST_ASSERT_EQUAL(2, Calcular(calculadora, "4/2"));
+    TEST_ASSERT_EQUAL(0, Calcular(calculadora, "3/4"));
 }
