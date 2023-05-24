@@ -13,13 +13,13 @@ void test_crear_calculadora(void) {
     TEST_ASSERT_TRUE(CrearCalculadora() != NULL);
 }
 
+int Suma(int a, int b) {
+    return (a + b);
+}
+
 // Agragar operacion suma
 void test_agregar_suma(void) {
     calculadora_t calculadora = CrearCalculadora();
-
-    int Suma(int a, int b) {
-        return (a + b);
-    }
 
     TEST_ASSERT_TRUE(AgregarOperacion(calculadora, '+', Suma));
 }
