@@ -15,12 +15,18 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 SPDX-License-Identifier: MIT
 *************************************************************************************************/
 
-/** \brief Brief description of the file
+/**
+ * \cond
+ * El archivo no será expuesto en la página generada por doxygen
+ */
+
+/** \brief Programa de ejemplo para el uso de calculadora.h
  **
- ** Full file description
+ ** En este archivo se presenta el modo de hacer un correcto uso de la librería calculadora.h.
+ ** Se realizarán las operaciones básicas de suma, resta, multiplicación y division como ejemplo de
+ ** aplicacion.
  **
- ** \addtogroup name Module denomination
- ** \brief Brief description of the module
+ ** \addtogroup Aplicacion
  ** @{ */
 
 /* === Headers files inclusions =============================================================== */
@@ -36,12 +42,40 @@ SPDX-License-Identifier: MIT
 
 /* === Private function declarations =========================================================== */
 
+/**
+ * @brief Funcion definida por el usuario
+ * Realiza la suma de a y b, es decir, a + b
+ * @param a Primer término
+ * @param b Segundo término
+ * @return Retorna la suma como un entero.
+ */
 int Suma(int a, int b);
 
+/**
+ * @brief Funcion definida por el usuario
+ * Realiza la diferencia de a y b, es decir, a - b
+ * @param a Primer término
+ * @param b Segundo término
+ * @return Retorna la diferencia como un entero.
+ */
 int Resta(int a, int b);
 
+/**
+ * @brief Funcion definida por el usuario
+ * Realiza el producto de a y b, es decir, a * b
+ * @param a Primer elemento
+ * @param b Segundo elemento
+ * @return Retorna el producto como un entero.
+ */
 int Producto(int a, int b);
 
+/**
+ * @brief Funcion definida por el usuario
+ * Realiza el cociente de a y b, es decir, a / b
+ * @param a Dividendo
+ * @param b Divisor
+ * @return Retorna el cociente como un entero.
+ */
 int Cociente(int a, int b);
 
 /* === Public variable definitions ============================================================= */
@@ -67,15 +101,20 @@ int Cociente(int a, int b) {
 }
 
 /* === Public function implementation ========================================================== */
+
 int main(void) {
+    // Declaro la variable en la que se guardará el resultado.
     int ans = 0;
+    /// Creo la calculadora donde voy a guardar la operaciones definidas
     calculadora_t mi_calculadora = CrearCalculadora();
 
+    // Agrego las respectivas operaciones
     AgregarOperacion(mi_calculadora, '+', Suma);
     AgregarOperacion(mi_calculadora, '-', Resta);
     AgregarOperacion(mi_calculadora, '*', Producto);
     AgregarOperacion(mi_calculadora, '/', Cociente);
 
+    // Realizo los calculos e imprimo por pantalla los resultados,
     ans = Calcular(mi_calculadora, "7+3");
     printf("7 + 3 = %i\n", ans);
 
@@ -87,8 +126,13 @@ int main(void) {
 
     ans = Calcular(mi_calculadora, "7/3");
     printf("7 / 3 = %i\n", ans);
+
     return 0;
 }
+
+/**
+ * \endcond
+ */
 
 /* === End of documentation ==================================================================== */
 

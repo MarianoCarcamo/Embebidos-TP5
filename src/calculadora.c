@@ -14,13 +14,15 @@ OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 SPDX-License-Identifier: MIT
 *************************************************************************************************/
+/**
+ * \cond
+ * El archivo no será expuesto en la página generada por doxygen
+ */
 
-/** \brief Brief description of the file
+/** \brief Implementacion de la libraria calculadora.h
  **
- ** Full file description
- **
- ** \addtogroup name Module denomination
- ** \brief Brief description of the module
+ ** \addtogroup Calculadora
+ ** \brief Calculadora Dinámica
  ** @{ */
 
 /* === Headers files inclusions =============================================================== */
@@ -33,12 +35,15 @@ SPDX-License-Identifier: MIT
 
 /* === Private data type declarations ========================================================== */
 
+/// @brief Descriptor a estructura operacion_s
 typedef struct operacion_s * operacion_t;
 
+/// @brief Contiene un puntero al primer elemento de la lista enlazada
 struct calculadora_s {
     operacion_t operaciones;
 };
 
+/// @brief Definición de los atruibutos de operacion_s
 struct operacion_s {
     char operador;
     funcion_t funcion;
@@ -49,6 +54,13 @@ struct operacion_s {
 
 /* === Private function declarations =========================================================== */
 
+/**
+ * @brief Busca la operacion en la lista enlazada
+ *
+ * @param calculadora Descriptor de calculadora
+ * @param operador Indicador de la operacion a buscar
+ * @return operacion_t: Descriptor de la operacion encontrada. Caso de no encontrar devuelve NULL
+ */
 operacion_t BuscarOperacion(calculadora_t calculadora, char operador);
 
 /* === Public variable definitions ============================================================= */
@@ -119,6 +131,10 @@ int Calcular(calculadora_t calculadora, char * cadena) {
 }
 
 /* === Public function implementation ========================================================== */
+
+/**
+ * \endcond
+ */
 
 /* === End of documentation ==================================================================== */
 

@@ -18,12 +18,12 @@ SPDX-License-Identifier: MIT
 #ifndef CALCULADORA_H
 #define CALCULADORA_H
 
-/** \brief Brief description of the file
+/** \brief Calculadora Dinámica
  **
- ** Full file description
+ ** Implementacion de una calculadora dinámica en la que podrá crear sus propias operaciones
+ ** siguiendo una estructura predefinida.
  **
- ** \addtogroup name Module denomination
- ** \brief Brief description of the module
+ ** \addtogroup Calculadora
  ** @{ */
 
 /* === Headers files inclusions ================================================================ */
@@ -40,18 +40,41 @@ extern "C" {
 
 /* === Public data type declarations =========================================================== */
 
+/// Declaración del descriptor para la clase calculadora
 typedef struct calculadora_s * calculadora_t;
 
+/// Se declara la estructura con la que se deben implementar las operaciones
 typedef int (*funcion_t)(int, int);
 
 /* === Public variable declarations ============================================================ */
 
 /* === Public function declarations ============================================================ */
 
+/**
+ * @brief Metodo de creacion de una calculadora
+ *
+ * @return calculadora_t: descriptor de calculadora
+ */
 calculadora_t CrearCalculadora(void);
 
+/**
+ * @brief Metodo para agragar operaciones a la calculadora
+ *
+ * @param calculadora Puntero a la calculadora a la que se le agrega la operacion
+ * @param operador Caracter que representará a la operacion
+ * @param funcion Funcion que realiza la operacion implementada por el usuario
+ * @return true: La operacion se almacena con exito
+ * @return false: La operacion no se almacena
+ */
 bool AgregarOperacion(calculadora_t calculadora, char operador, funcion_t funcion);
 
+/**
+ * @brief Metodo para realizar los calculos
+ *
+ * @param calculadora Puntero a la calculadora que realiza la operacion
+ * @param cadena Operacion a realizar por calculadora Ej: "2+4"
+ * @return int Resultado del calculo
+ */
 int Calcular(calculadora_t calculadora, char * cadena);
 
 /* === End of documentation ==================================================================== */

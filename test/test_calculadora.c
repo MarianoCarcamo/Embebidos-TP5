@@ -1,10 +1,3 @@
-// Agragar operacion resta
-// Hacer una resta
-// Agragar operacion multiplicacion
-// Hacer una multiplicacion
-// Agragar operacion division
-// Hacer una division
-
 #include "unity.h"
 #include "calculadora.h"
 
