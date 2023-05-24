@@ -17,11 +17,21 @@ int Suma(int a, int b) {
     return (a + b);
 }
 
+int Resta(int a, int b) {
+    return (a - b);
+}
+
+int Producto(int a, int b) {
+    return (a * b);
+}
+
 // Agragar operacion
 void test_agregar_operacion(void) {
     calculadora_t calculadora = CrearCalculadora();
 
     TEST_ASSERT_TRUE(AgregarOperacion(calculadora, '+', Suma));
+    TEST_ASSERT_TRUE(AgregarOperacion(calculadora, '-', Resta));
+    TEST_ASSERT_TRUE(AgregarOperacion(calculadora, '*', Producto));
 }
 
 // Hacer suma
@@ -33,10 +43,6 @@ void test_hacer_suma(void) {
     TEST_ASSERT_EQUAL(7, Calcular(calculadora, "2+5"));
 }
 
-int Resta(int a, int b) {
-    return (a - b);
-}
-
 // Hacer resta
 void test_hacer_resta(void) {
     calculadora_t calculadora = CrearCalculadora();
@@ -44,4 +50,13 @@ void test_hacer_resta(void) {
     AgregarOperacion(calculadora, '-', Resta);
     TEST_ASSERT_EQUAL(2, Calcular(calculadora, "4-2"));
     TEST_ASSERT_EQUAL(-1, Calcular(calculadora, "3-4"));
+}
+
+// Hacer producto
+void test_hacer_producto(void) {
+    calculadora_t calculadora = CrearCalculadora();
+
+    AgregarOperacion(calculadora, '*', Producto);
+    TEST_ASSERT_EQUAL(8, Calcular(calculadora, "4*2"));
+    TEST_ASSERT_EQUAL(12, Calcular(calculadora, "3*4"));
 }
