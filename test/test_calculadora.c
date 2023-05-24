@@ -17,22 +17,27 @@ int Suma(int a, int b) {
     return (a + b);
 }
 
-// Agragar operacion suma
-void test_agregar_suma(void) {
+// Agragar operacion
+void test_agregar_operacion(void) {
     calculadora_t calculadora = CrearCalculadora();
 
     TEST_ASSERT_TRUE(AgregarOperacion(calculadora, '+', Suma));
 }
 
-// // Hacer suma
-// void test_hacer_suma(void) {
+// Hacer suma
+void test_hacer_suma(void) {
+    calculadora_t calculadora = CrearCalculadora();
+
+    AgregarOperacion(calculadora, '+', Suma);
+    TEST_ASSERT_EQUAL(6, Calcular(calculadora, "2+4"));
+    TEST_ASSERT_EQUAL(7, Calcular(calculadora, "2+5"));
+}
+
+// // Hacer resta
+// void test_hacer_resta(void) {
 //     calculadora_t calculadora = CrearCalculadora();
 
-//     int Suma(int a, int b) {
-//         return a + b;
-//     }
-
-//     TEST_ASSERT_TRUE(AgregarOperacion(calculadora, '+', Suma));
-//     TEST_ASSERT_EQUAL(6, Calcular(calculadora, "2+4"));
-//     TEST_ASSERT_EQUAL(7, Calcular(calculadora, "2+5"));
+//     AgregarOperacion(calculadora, '-', Resta);
+//     TEST_ASSERT_EQUAL(2, Calcular(calculadora, "4-2"));
+//     TEST_ASSERT_EQUAL(-1, Calcular(calculadora, "3-4"));
 // }

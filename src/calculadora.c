@@ -66,31 +66,32 @@ calculadora_t CrearCalculadora(void) {
 }
 
 bool AgregarOperacion(calculadora_t calculadora, char operador, funcion_t funcion) {
-    operacion_t operacion = malloc(sizeof(struct operacion_s));
+    operacion_t operacion = NULL;
 
-    if ((operacion) && !BuscarOperacion(calculadora, operador)) {
+    if (!BuscarOperacion(calculadora, operador)) {
+        operacion = malloc(sizeof(struct operacion_s));
+    }
+    if (operacion) {
         operacion->operador = operador;
         operacion->funcion = funcion;
         operacion->siguiente = calculadora->operaciones;
-        // calculadora->operaciones = operacion;
+        calculadora->operaciones = operacion;
     }
     return (operacion != NULL);
 }
 
 operacion_t BuscarOperacion(calculadora_t calculadora, char operador) {
     operacion_t result = NULL;
-    // operacion_t actual = calculadora->operaciones;
+    operacion_t actual = calculadora->operaciones;
 
-    // if (actual != NULL) {
-    //     for (operacion_t actual = calculadora->operaciones; actual->siguiente != NULL;
-    //          actual = actual->siguiente) {
-
-    //         if (actual->operador == operador) {
-    //             result = actual;
-    //             break;
-    //         }
-    //     }
-    // }
+    if (actual != NULL) {
+        for (actual; actual != NULL; actual = actual->siguiente) {
+            if (actual->operador == operador) {
+                result = actual;
+                break;
+            }
+        }
+    }
     return result;
 }
 
@@ -98,6 +99,7 @@ int Calcular(calculadora_t calculadora, char * cadena) {
     int a, b;
     char operador;
     int resultado = 0;
+    operacion_t operacion = NULL;
 
     for (int index = 0; index < strlen(cadena); index++) {
         if (cadena[index] < '0') {
@@ -108,7 +110,7 @@ int Calcular(calculadora_t calculadora, char * cadena) {
         }
     }
 
-    operacion_t operacion = BuscarOperacion(calculadora, operador);
+    operacion = BuscarOperacion(calculadora, operador);
     if (operacion) {
         resultado = operacion->funcion(a, b);
     }
