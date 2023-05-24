@@ -1,4 +1,3 @@
-NAVEGADOR = firefox
 SRC_DIR = ./src
 OUT_DIR = ./build
 OBJ_DIR = $(OUT_DIR)/obj
@@ -32,4 +31,4 @@ clean: $(OUT_DIR)
 
 doc: ./doxyfile $(DOC_DIR)
 	doxygen
-	$(NAVEGADOR) $(DOC_DIR)/html/index.html
+	xdg-open $(DOC_DIR)/html/index.html
