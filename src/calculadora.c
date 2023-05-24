@@ -27,25 +27,29 @@ SPDX-License-Identifier: MIT
 
 #include "calculadora.h"
 #include <stdlib.h>
-#include <stdbool.h>
+#include <string.h>
 
 /* === Macros definitions ====================================================================== */
-
-struct calculadora_s {};
 
 /* === Private data type declarations ========================================================== */
 
 typedef struct operacion_s * operacion_t;
 
-struct operacion_s {};
+struct calculadora_s {
+    operacion_t operaciones;
+};
+
+struct operacion_s {
+    char operador;
+    funcion_t funcion;
+    operacion_t siguiente;
+};
 
 /* === Private variable declarations =========================================================== */
 
 /* === Private function declarations =========================================================== */
 
-calculadora_t CrearCalculadora(void);
-
-bool AgregarOperacion(calculadora_t calculadora, operacion_t operacion, char operador);
+operacion_t BuscarOperacion(calculadora_t calculadora, char operador);
 
 /* === Public variable definitions ============================================================= */
 
@@ -55,11 +59,61 @@ bool AgregarOperacion(calculadora_t calculadora, operacion_t operacion, char ope
 
 calculadora_t CrearCalculadora(void) {
     calculadora_t calculadora = malloc(sizeof(struct calculadora_s));
+    if (calculadora) {
+        memset(calculadora, 0, sizeof(struct calculadora_s));
+    }
     return calculadora;
 }
 
-bool AgregarOperacion(calculadora_t calculadora, operacion_t operacion, char operador) {
-    return true;
+bool AgregarOperacion(calculadora_t calculadora, char operador, funcion_t funcion) {
+    operacion_t operacion = malloc(sizeof(struct operacion_s));
+
+    if ((operacion) && !BuscarOperacion(calculadora, operador)) {
+        operacion->operador = operador;
+        operacion->funcion = funcion;
+        operacion->siguiente = calculadora->operaciones;
+        // calculadora->operaciones = operacion;
+    }
+    return (operacion != NULL);
+}
+
+operacion_t BuscarOperacion(calculadora_t calculadora, char operador) {
+    operacion_t result = NULL;
+    // operacion_t actual = calculadora->operaciones;
+
+    // if (actual != NULL) {
+    //     for (operacion_t actual = calculadora->operaciones; actual->siguiente != NULL;
+    //          actual = actual->siguiente) {
+
+    //         if (actual->operador == operador) {
+    //             result = actual;
+    //             break;
+    //         }
+    //     }
+    // }
+    return result;
+}
+
+int Calcular(calculadora_t calculadora, char * cadena) {
+    int a, b;
+    char operador;
+    int resultado = 0;
+
+    for (int index = 0; index < strlen(cadena); index++) {
+        if (cadena[index] < '0') {
+            operador = cadena[index];
+            a = atoi(cadena);
+            b = atoi(cadena + index + 1);
+            break;
+        }
+    }
+
+    operacion_t operacion = BuscarOperacion(calculadora, operador);
+    if (operacion) {
+        resultado = operacion->funcion(a, b);
+    }
+
+    return resultado;
 }
 
 /* === Public function implementation ========================================================== */
