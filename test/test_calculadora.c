@@ -33,11 +33,15 @@ void test_hacer_suma(void) {
     TEST_ASSERT_EQUAL(7, Calcular(calculadora, "2+5"));
 }
 
-// // Hacer resta
-// void test_hacer_resta(void) {
-//     calculadora_t calculadora = CrearCalculadora();
+int Resta(int a, int b) {
+    return (a - b);
+}
 
-//     AgregarOperacion(calculadora, '-', Resta);
-//     TEST_ASSERT_EQUAL(2, Calcular(calculadora, "4-2"));
-//     TEST_ASSERT_EQUAL(-1, Calcular(calculadora, "3-4"));
-// }
+// Hacer resta
+void test_hacer_resta(void) {
+    calculadora_t calculadora = CrearCalculadora();
+
+    AgregarOperacion(calculadora, '-', Resta);
+    TEST_ASSERT_EQUAL(2, Calcular(calculadora, "4-2"));
+    TEST_ASSERT_EQUAL(-1, Calcular(calculadora, "3-4"));
+}
