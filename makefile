@@ -32,3 +32,6 @@ clean: $(OUT_DIR)
 doc: ./doxyfile $(DOC_DIR)
 	doxygen
 	xdg-open $(DOC_DIR)/html/index.html
+
+run: $(BIN_DIR)/app.elf
+	$(BIN_DIR)/app.elf
